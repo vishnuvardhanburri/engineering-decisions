@@ -1,49 +1,35 @@
 # Engineering Decisions
 
-This repository documents architectural decisions, failure analysis, and system design patterns learned from building and owning **production software systems**.
+This repository captures engineering judgment and patterns from building and owning **production systems**.
 
-It is intentionally text-first.
+It is not a “best practices” list, an algorithm gallery, or a tutorial collection.
 
-No demos.  
-No frameworks.  
-No tutorials.
-
-The goal is to capture **judgment** — not tools.
-
-Most real-world complexity does not come from algorithms.  
-It comes from:
-- unclear ownership
-- brittle boundaries
-- bad data
-- partial failure
-- and decisions made under pressure
-
-This repository exists to make those decisions explicit.
+This is where I externalize **hard-earned decisions** and **painful failures** so others can understand how resilient systems are actually built and maintained.
 
 ---
 
 ## Contents
 
-- [`DECISIONS.md`](./DECISIONS.md)  
-  Architectural and engineering decisions I default to — and why.
-
-- [`FAILURES.md`](./FAILURES.md)  
-  Failures, postmortems, and lessons learned from real systems.
+- **DECISIONS.md** — Architectural defaults and engineering stances shaped by real systems.
+- **FAILURES.md** — Postmortems and lessons learned from failures that mattered.
 
 ---
 
-## Who This Is For
+## When to Read This
 
-This repository is written for:
-- CTOs and founders responsible for production systems
-- Senior engineers designing long-lived software
-- Teams that have already felt the cost of bad early decisions
+This is written for:
+- CTOs who care about uptime, correctness, and long-term velocity
+- Founders responsible for real users and revenue
+- Senior engineers owning production systems
 
-If you’re looking for:
-- “best practices”
-- shiny tools
-- or perfect architectures
+Not for:
+- Shallow tutorials
+- Tool showcase
+- Buzzword checklists
 
-This is not that.
+---
 
-This is about **what holds up under pressure**.
+## Want the Deep Version?
+<button><a href="./DECISIONS.md">Read Engineering Decisions</a></button>
+<button><a href="./FAILURES.md">Read Failure Postmortems</a></button>
+
