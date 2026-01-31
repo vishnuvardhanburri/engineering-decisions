@@ -1,83 +1,82 @@
-# Failures I’ve Learned From
+# Failure Postmortems
 
-Experience is measured in failures understood — not features shipped.
+Experience is measured in **failures understood**, not features built.
 
-These are anonymized lessons from real production systems.
-
----
-
-## 1. “Temporary” Fixes Are Permanent
-
-Short-term workarounds often outlive the systems they were meant to patch.
-
-Lesson:
-- Treat temporary fixes as permanent until proven otherwise
-- Document intent, always
-- Schedule removal immediately — or accept the debt consciously
+These lessons are anonymized but real.
 
 ---
 
-## 2. Silent Failures Destroy Trust
+## “Temporary” Fixes Last Forever
 
-The most damaging failures are not outages — they are incorrect behavior.
+Short-term workarounds persist because intentions aren’t explicit.
 
 Lesson:
-- Crashes are easier to detect than lies
-- Systems must fail loudly when correctness is at risk
-- Monitoring must detect *wrong* results, not just errors
+- Document intent
+- Schedule removal
+- If not removed, accept the cost consciously
 
 ---
 
-## 3. Most Outages Happen at Boundaries
+## Silent Failures Destroy Confidence
 
-Rarely inside core logic.
+Wrong behavior that doesn’t crash is worse than crashes.
 
 Lesson:
+- Fail loudly when correctness is at risk
+- Monitoring must detect *wrong results*, not just errors
+- Alerts must be action-oriented
+
+---
+
+## Most Outages Happen at Boundaries
+
+Rarely at core logic.
+
+Lesson:
+- Assume downstream misbehavior
 - Validate inputs aggressively
-- Assume downstream systems will misbehave
-- Treat integrations as hostile by default
+- Design isolation at boundaries
 
 ---
 
-## 4. Data Quality Is an Operational Problem
+## Data Quality Is an Operational Risk
 
-Bad data bypasses most safeguards.
+Data issues masquerade as code bugs.
 
 Lesson:
 - Validate early
-- Normalize aggressively
-- Track provenance
-- Make corruption visible
+- Normalize thoroughly
+- Ensure provenance tracking
+- Surface corruption clearly
 
 ---
 
-## 5. AI Fails Confidently
+## AI Fails With Confidence
 
-AI systems produce plausible nonsense.
+LLMs return plausible nonsense.
 
 Lesson:
-- Never trust AI outputs blindly
-- Constrain AI with deterministic checks
-- Always provide fallbacks
-- Make uncertainty visible to users
+- Constrain outputs
+- Add deterministic checks
+- Provide fallbacks
+- Avoid silent acceptance
 
 ---
 
-## 6. Rewrites Fail More Often Than They Succeed
+## Rewrites Fail More Often Than They Succeed
 
-Most rewrites fail because they underestimate edge cases.
+Rebuilds underestimate edge cases.
 
 Lesson:
-- Replace parts, not systems
-- Preserve institutional knowledge
-- Fix what hurts most first
+- Incremental correction beats rewrites
+- Preserve knowledge
+- Fix what hurts first
 
 ---
 
-## Final Lesson
+## Real Cost of Failure = Loss of Trust
 
-The cost of failure is rarely downtime.
+Downtime is expensive.  
+Incorrect behavior is disastrous.
 
-The real cost is **loss of trust** — from users, teams, and stakeholders.
-
-Every system I design now optimizes to preserve trust under failure.
+This is why prediction without observability is a liability.
