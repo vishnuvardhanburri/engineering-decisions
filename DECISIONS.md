@@ -1,94 +1,81 @@
-# Engineering Decisions I Default To
+# Engineering Decisions
 
-These are not theoretical preferences.  
-They are defaults shaped by production failures, operational pain, and long-term ownership.
-
----
-
-## 1. Explicit Over Clever
-
-If behavior is not obvious from reading the code, it will fail in production.
-
-- Prefer explicit flows over abstractions
-- Prefer readable logic over reusable magic
-- Prefer boring code that survives context loss
+These are defaults I take into systems when there is uncertainty.  
+They are shaped by production failures, operational pressure, and long-term ownership — not theory.
 
 ---
 
-## 2. Fewer Services Beat Premature Microservices
+## Explicit > Clever
 
-Most systems fail because of **coordination**, not scale.
+If behavior isn’t obvious by reading the code, it will fail in production.
+
+- Favor explicit over implicit
+- Favor clear logic over reusable magic
+- Favor readability over abstraction
+
+---
+
+## Fewer Services, Happier Teams
+
+Complex topology increases failure modes.
 
 - Start with fewer, well-defined services
-- Split only when boundaries are painfully clear
-- Optimize for operability before topology
-
-Distributed systems multiply failure modes.
+- Split only when boundaries are unavoidable
+- Optimize for operations before topology
 
 ---
 
-## 3. Data Is the System
+## Data Is the System
 
-Most outages are data problems pretending to be code problems.
+Most outages are not bugs in logic — they are data problems.
 
-- Schemas are first-class design artifacts
-- Migrations are treated as production events
-- Data loss is worse than downtime
-- Backfills and rollbacks are planned early
+- Schemas are first-class
+- Migrations are treated as events
+- Backfills and rollbacks are planned, not afterthoughts
 
 ---
 
-## 4. Ownership Must Be Obvious
+## Ownership Must Be Obvious
 
-Shared responsibility is often disguised ambiguity.
+Shared responsibility creates ambiguity.
 
-- Every system has a clear owner
+- Every service has a clear owner
 - Every decision has a reason
-- Every service has an escalation path
-
-If no one owns it, it will rot.
+- Every critical path has an escalation path
 
 ---
 
-## 5. Observability Is a Requirement, Not a Feature
+## Observability Is Required
 
-If you can’t explain why something happened, you don’t control the system.
+If you can’t explain what happened, you don’t control the system.
 
-- Logs, metrics, and traces are designed early
-- Silent failures are unacceptable
-- Alerting favors signal over noise
-
-Debuggability is part of correctness.
+- Logs, metrics, traces designed early
+- Silent failures unacceptable
+- Alerts designed to emphasize signal over noise
 
 ---
 
-## 6. AI Is Probabilistic, Not Authoritative
+## AI Is Probabilistic
 
-AI systems fail *politely* and *confidently*.
+AI systems produce plausible yet incorrect outputs.
 
-- AI outputs are always validated
-- Deterministic systems guard probabilistic ones
-- Fallbacks are mandatory
-- No silent automation
-
-AI assists decisions — it does not make them.
+- Validate all outputs
+- Constrain AI with deterministic logic
+- Provide fallback paths
+- Make uncertainty visible
 
 ---
 
-## 7. Incremental Correction Beats Rewrites
+## Rewrite Is Usually the Wrong First Move
 
-Rewrites feel clean. They usually fail.
+Rewrites wipe institutional knowledge.
 
-- Fix boundaries before rebuilding cores
-- Replace parts, not entire systems
-- Earn simplicity gradually
-
-Systems improve through pressure, not resets.
+- Fix boundaries first
+- Replace parts, not systems
+- Earn simplicity through hard constraint
 
 ---
 
 ## Final Note
 
-These decisions trade speed for **control**.
-
-In the long run, control is what creates speed.
+These decisions trade speed for **control** — and control delivers long-term velocity.
